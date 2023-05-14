@@ -33,7 +33,7 @@ class Config extends Migration
             ],
             'author' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '128',
             ],
             'description' => [
                 'type'       => 'TEXT',
