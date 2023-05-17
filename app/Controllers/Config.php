@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 
 class Config extends BaseController
 {
-
     protected $configModel;
 
     public function __construct()
@@ -33,10 +32,27 @@ class Config extends BaseController
             'keywords' => ['label' => 'keywords', 'rules' => 'required'],
             'author' => ['label' => 'author', 'rules' => 'required'],
             'description' => ['label' => 'description', 'rules' => 'required'],
+            'logo' => ['label' => 'logo', 'rules' => 'max_size[logo,500]|mime_in[logo,image/png,image/jpeg,image/jpg]|is_image[logo]'],
         ];
 
         if (!$this->validate($rules)) {
+            session()->setFlashdata('error', 'Data gagal diubah');
             redirect()->back()->withInput();
+        }
+
+        // get upload
+        $file = $this->request->getFile('logo');
+        $oldFile = $this->request->getVar('logo_old');
+
+        if ($file->getError() == 4) {
+            $fileName = $oldFile;
+        } else {
+            $fileName   = $file->getRandomName();
+            $file->move('assets/img', $fileName);
+
+            if ($oldFile) {
+                unlink('assets/img/' . $oldFile);
+            }
         }
 
         $data = [
@@ -45,6 +61,7 @@ class Config extends BaseController
             'keywords' => $this->request->getVar('keywords'),
             'author' => $this->request->getVar('author'),
             'description' => $this->request->getVar('description'),
+            'logo' => $fileName,
             'id_config' => 1
         ];
 

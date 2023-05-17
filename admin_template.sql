@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 14, 2023 at 03:05 AM
+-- Generation Time: May 17, 2023 at 06:56 PM
 -- Server version: 8.0.30
--- PHP Version: 7.2.19
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,7 +67,7 @@ CREATE TABLE `tabel_config` (
 --
 
 INSERT INTO `tabel_config` (`id_config`, `appname`, `copyright`, `logo`, `keywords`, `author`, `description`, `config_created_at`, `config_updated_at`) VALUES
-(1, 'Admin Templat', 'Tamus Tahir || 2023', '', 'Ci4, BS5', 'Tamus Tahir', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\',', '2023-05-14 02:01:18', '2023-05-13 18:31:37');
+(1, 'Admin Template', 'Tamus Tahir || 2023', '1684349672_6abe7d380743ce316df5.jpg', 'Ci4, BS5', 'Tamus Tahir', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\',', '2023-05-14 02:01:18', '2023-05-17 18:54:32');
 
 --
 -- Indexes for dumped tables

@@ -41,6 +41,9 @@
 
 <body>
 
+    <div class="flash-success" data-flashdata="<?= session()->getFlashdata('success'); ?>"></div>
+    <div class="flash-error" data-flashdata="<?= session()->getFlashdata('error'); ?>"></div>
+
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -189,17 +192,21 @@
     <?= $this->renderSection('modal'); ?>
 
     <!-- Vendor JS Files -->
-    <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <!-- <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script> -->
+    <script src="/assets/vendor/jquery/jquery-3.7.0.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/parsley/parsley.min.js"></script>
+    <script src="/assets/vendor/sweetalert2/sweetalert2@11"></script>
+    <!-- <script src="/assets/vendor/chart.js/chart.umd.js"></script>
     <script src="/assets/vendor/echarts/echarts.min.js"></script>
     <script src="/assets/vendor/quill/quill.min.js"></script>
     <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script> -->
 
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/script.js"></script>
 
     <?= $this->renderSection('script'); ?>
 
