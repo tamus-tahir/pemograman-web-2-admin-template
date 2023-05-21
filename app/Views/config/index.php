@@ -42,10 +42,12 @@
 
     <div class="col-md-4">
         <label for="logo" class="form-label">Upload Logo <span class="text-danger">(Type PNG/JPG/JPEG, Max Size 500Kb)</span></label>
-        <input class="form-control <?= validation_show_error('logo') ? 'is-invalid' : ''; ?>" type="file" id="logo" name="logo">
+        <input class="form-control <?= validation_show_error('logo') ? 'is-invalid' : ''; ?>" type="file" id="upload" name="logo">
         <div class="invalid-feedback">
             <?= validation_show_error('logo'); ?>
         </div>
+
+        <img src="/assets/img/<?= $config['logo']; ?>" alt="" width="100%" class="mt-3 rounded" id="preview">
     </div>
 
     <input type="hidden" name="logo_old" value="<?= $config['logo']; ?>">

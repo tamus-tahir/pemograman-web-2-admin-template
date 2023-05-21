@@ -44,24 +44,13 @@ class Config extends BaseController
         $file = $this->request->getFile('logo');
         $oldFile = $this->request->getVar('logo_old');
 
-        if ($file->getError() == 4) {
-            $fileName = $oldFile;
-        } else {
-            $fileName   = $file->getRandomName();
-            $file->move('assets/img', $fileName);
-
-            if ($oldFile) {
-                unlink('assets/img/' . $oldFile);
-            }
-        }
-
         $data = [
             'appname' => $this->request->getVar('appname'),
             'copyright' => $this->request->getVar('copyright'),
             'keywords' => $this->request->getVar('keywords'),
             'author' => $this->request->getVar('author'),
             'description' => $this->request->getVar('description'),
-            'logo' => $fileName,
+            'logo' => upload($file, $oldFile, 'assets/img'),
             'id_config' => 1
         ];
 

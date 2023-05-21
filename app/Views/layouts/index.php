@@ -6,13 +6,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title><?= $title; ?></title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-    <meta content="" name="author">
+    <?php $config = model('ConfigModel')->getId(1) ?>
+
+    <meta content="<?= $config['description']; ?>" name="description">
+    <meta content="<?= $config['keywords']; ?>" name="keywords">
+    <meta content="<?= $config['author']; ?>" name="author">
 
     <!-- Favicons -->
-    <link href="/assets/img/favicon.png" rel="icon">
-    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/assets/img/<?= $config['logo']; ?>" rel="icon">
+    <link href="/assets/img/<?= $config['logo']; ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -49,8 +51,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="/assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <img src="/assets/img/<?= $config['logo']; ?>" alt="">
+                <span class="d-none d-lg-block"><?= $config['appname']; ?></span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -176,7 +178,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span><?= $config['copyright']; ?></span></strong>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

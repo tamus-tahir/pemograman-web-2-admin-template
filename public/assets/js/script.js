@@ -32,3 +32,9 @@ if (flashError) {
     })
 }
 // ===== end sweetalert2 =====
+
+// =====  preview image before upload =====
+$('#upload').on('change', function (event) {
+    $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
+})
+// ===== end preview image before upload =====
