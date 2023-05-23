@@ -17,7 +17,7 @@ class Navigasi extends BaseController
     {
         $data = [
             'title' => 'Navigasi',
-            'navigasi' => $this->navigasiModel->findAll(),
+            'navigasi' => $this->navigasiModel->get(),
         ];
 
         return view('navigasi/index', $data);
@@ -27,6 +27,7 @@ class Navigasi extends BaseController
     {
         $data = [
             'title' => 'Tambah Navigasi',
+            'menu' => $this->navigasiModel->getMenuUtama(),
             'validation' => \Config\Services::validation(),
         ];
 

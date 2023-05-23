@@ -32,6 +32,9 @@
         <label for="dropdown" class="form-label">Dropdown <span class="text-danger">*</span></label>
         <select class="form-select <?= validation_show_error('dropdown') ? 'is-invalid' : ''; ?>" id="dropdown" name="dropdown" required>
             <option value="0">NO</option>
+            <?php foreach ($menu as $row) : ?>
+                <option value="<?= $row['id_navigasi']; ?>"><?= $row['menu']; ?></option>
+            <?php endforeach ?>
         </select>
         <div class="invalid-feedback">
             <?= validation_show_error('dropdown'); ?>

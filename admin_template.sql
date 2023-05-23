@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 21, 2023 at 07:34 AM
+-- Generation Time: May 23, 2023 at 06:57 PM
 -- Server version: 8.0.30
--- PHP Version: 7.4.19
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -93,7 +93,12 @@ CREATE TABLE `tabel_navigasi` (
 --
 
 INSERT INTO `tabel_navigasi` (`id_navigasi`, `menu`, `url`, `icon`, `dropdown`, `urutan`, `aktif`, `navigasi_created_at`, `navigasi_updated_at`) VALUES
-(1, 'Dashboard', 'dashboard', 'bi bi-grid', 0, 1, 1, '2023-05-21 07:33:11', '2023-05-21 07:33:11');
+(1, 'Dashboard', 'dashboard', 'bi bi-grid', 0, 1, 1, '2023-05-21 07:33:11', '2023-05-21 07:33:11'),
+(2, 'Config', 'config', 'bx bx-cog', 0, 2, 1, '2023-05-23 18:23:46', '2023-05-23 18:23:46'),
+(3, 'User Management', '#', 'bx bx-user', 0, 3, 1, '2023-05-23 18:27:42', '2023-05-23 18:27:42'),
+(4, 'Navigasi', 'navigasi', 'bi bi-circle', 3, 1, 1, '2023-05-23 18:30:32', '2023-05-23 18:30:32'),
+(5, 'Profil', 'profil', 'bi bi-circle', 3, 2, 1, '2023-05-23 18:34:53', '2023-05-23 18:34:53'),
+(6, 'User', 'user', 'bi bi-circle', 3, 3, 1, '2023-05-23 18:35:07', '2023-05-23 18:35:07');
 
 --
 -- Indexes for dumped tables
@@ -137,7 +142,7 @@ ALTER TABLE `tabel_config`
 -- AUTO_INCREMENT for table `tabel_navigasi`
 --
 ALTER TABLE `tabel_navigasi`
-  MODIFY `id_navigasi` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_navigasi` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
