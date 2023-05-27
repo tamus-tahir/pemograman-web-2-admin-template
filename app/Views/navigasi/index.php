@@ -7,7 +7,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-hover table-bordered w-100" id="example">
+    <table class="table table-hover table-bordered w-100" id="data-table">
         <thead class="bg-primary text-white">
             <tr>
                 <th scope="col">#</th>
@@ -30,10 +30,17 @@
                     <td>
                         <i class="<?= $row['icon']; ?>"></i>
                     </td>
-                    <td><?= $row['dropdown'] == 0 ? 'root' : getMenu($row['dropdown'])['menu']; ?></td>
+                    <td><?= $row['dropdown'] == 0 ? 'root' : getMenu($row['dropdown']); ?></td>
                     <td><?= $row['urutan']; ?></td>
                     <td><?= $row['aktif'] == 1 ? 'Yes' : 'No'; ?></td>
-                    <td></td>
+                    <td class="text-nowrap">
+                        <a href="/navigasi/edit/<?= $row['id_navigasi']; ?>" class="btn btn-warning me-1">
+                            <i class='bx bx-edit-alt'></i>
+                        </a>
+                        <a href="/navigasi/delete/<?= $row['id_navigasi']; ?>" class="btn btn-danger btn-delete">
+                            <i class='bx bx-trash'></i>
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>
@@ -48,9 +55,5 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
+
 <?= $this->endSection(); ?>

@@ -18,5 +18,10 @@ function upload($file, $oldFile, $temp)
 
 function getMenu($param)
 {
-    return model('NavigasiModel')->getId($param);
+    $navigasi = model('NavigasiModel')->getId($param);
+    if ($navigasi) {
+        return $navigasi['menu'];
+    }
+
+    return '';
 }

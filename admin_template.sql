@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 23, 2023 at 06:57 PM
+-- Generation Time: May 27, 2023 at 06:38 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -43,7 +43,8 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2023-05-13-175638', 'App\\Database\\Migrations\\Config', 'default', 'App', 1684000848, 1),
-(2, '2023-05-21-011528', 'App\\Database\\Migrations\\Navigasi', 'default', 'App', 1684653812, 2);
+(2, '2023-05-21-011528', 'App\\Database\\Migrations\\Navigasi', 'default', 'App', 1684653812, 2),
+(3, '2023-05-27-175601', 'App\\Database\\Migrations\\Profil', 'default', 'App', 1685210216, 3);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,27 @@ INSERT INTO `tabel_navigasi` (`id_navigasi`, `menu`, `url`, `icon`, `dropdown`, 
 (3, 'User Management', '#', 'bx bx-user', 0, 3, 1, '2023-05-23 18:27:42', '2023-05-23 18:27:42'),
 (4, 'Navigasi', 'navigasi', 'bi bi-circle', 3, 1, 1, '2023-05-23 18:30:32', '2023-05-23 18:30:32'),
 (5, 'Profil', 'profil', 'bi bi-circle', 3, 2, 1, '2023-05-23 18:34:53', '2023-05-23 18:34:53'),
-(6, 'User', 'user', 'bi bi-circle', 3, 3, 1, '2023-05-23 18:35:07', '2023-05-23 18:35:07');
+(7, 'User', 'user', 'bi bi-circle', 3, 3, 1, '2023-05-27 17:50:30', '2023-05-27 17:50:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_profil`
+--
+
+CREATE TABLE `tabel_profil` (
+  `id_profil` int UNSIGNED NOT NULL,
+  `profil` varchar(100) NOT NULL,
+  `profil_created_at` datetime NOT NULL,
+  `profil_updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tabel_profil`
+--
+
+INSERT INTO `tabel_profil` (`id_profil`, `profil`, `profil_created_at`, `profil_updated_at`) VALUES
+(2, 'Superadmin', '2023-05-27 18:05:35', '2023-05-27 18:05:35');
 
 --
 -- Indexes for dumped tables
@@ -123,6 +144,12 @@ ALTER TABLE `tabel_navigasi`
   ADD PRIMARY KEY (`id_navigasi`);
 
 --
+-- Indexes for table `tabel_profil`
+--
+ALTER TABLE `tabel_profil`
+  ADD PRIMARY KEY (`id_profil`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -130,7 +157,7 @@ ALTER TABLE `tabel_navigasi`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tabel_config`
@@ -142,7 +169,13 @@ ALTER TABLE `tabel_config`
 -- AUTO_INCREMENT for table `tabel_navigasi`
 --
 ALTER TABLE `tabel_navigasi`
-  MODIFY `id_navigasi` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_navigasi` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tabel_profil`
+--
+ALTER TABLE `tabel_profil`
+  MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

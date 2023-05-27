@@ -31,6 +31,27 @@ if (flashError) {
         text: flashError,
     })
 }
+
+// ===== alert confirm =====
+$('.btn-delete').on('click', function (e) {
+
+    e.preventDefault();
+
+    Swal.fire({
+        title: 'Anda Yakin?',
+        text: "Data akan dihapus!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus data!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = $(this).attr('href')
+        }
+    })
+})
+
 // ===== end sweetalert2 =====
 
 // =====  preview image before upload =====
@@ -38,3 +59,7 @@ $('#upload').on('change', function (event) {
     $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
 })
 // ===== end preview image before upload =====
+
+// ===== data table =====
+$('#data-table').DataTable();
+// ===== end data table =====

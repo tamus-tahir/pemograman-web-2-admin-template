@@ -148,8 +148,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="components-accordion.html">
-                            <i class="bi bi-circle"></i><span>Accordion</span>
+                        <a href="/profil">
+                            <i class="bi bi-circle"></i><span>Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user">
+                            <i class="bi bi-circle"></i><span>User</span>
                         </a>
                     </li>
                 </ul>
