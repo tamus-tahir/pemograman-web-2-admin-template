@@ -7,10 +7,14 @@ use App\Controllers\BaseController;
 class Profil extends BaseController
 {
     protected $profilModel;
+    protected $aksesModel;
+    protected $navigasiModel;
 
     public function __construct()
     {
         $this->profilModel =  new \App\Models\ProfilModel;
+        $this->aksesModel =  new \App\Models\AksesModel;
+        $this->navigasiModel =  new \App\Models\NavigasiModel;
     }
 
     public function index()
@@ -21,17 +25,6 @@ class Profil extends BaseController
         ];
 
         return view('profil/index', $data);
-    }
-
-    public function new()
-    {
-        $data = [
-            'title' => 'Tambah profil',
-            'menu' => $this->profilModel->getMenuUtama(),
-            'validation' => \Config\Services::validation(),
-        ];
-
-        return view('profil/new', $data);
     }
 
     public function create()
@@ -54,26 +47,10 @@ class Profil extends BaseController
         return redirect()->to('/profil');
     }
 
-    public function edit($id_profil)
-    {
-        $data = [
-            'title' => 'Ubah profil',
-            'menu' => $this->profilModel->getMenuUtama(),
-            'profil' => $this->profilModel->getId($id_profil),
-            'validation' => \Config\Services::validation(),
-        ];
-
-        return view('profil/edit', $data);
-    }
-
     public function update($id_profil)
     {
         $rules = [
-            'menu' => ['label' => 'menu', 'rules' => 'required'],
-            'url' => ['label' => 'url', 'rules' => 'required'],
-            'dropdown' => ['label' => 'dropdown', 'rules' => 'required'],
-            'urutan' => ['label' => 'urutan', 'rules' => 'required'],
-            'aktif' => ['label' => 'aktif', 'rules' => 'required'],
+            'profil' => ['label' => 'profil', 'rules' => 'required'],
         ];
 
         if (!$this->validate($rules)) {
@@ -81,15 +58,8 @@ class Profil extends BaseController
             redirect()->back()->withInput();
         }
 
-        $icon = $this->request->getVar('icon');
-
         $data = [
-            'menu' => $this->request->getVar('menu'),
-            'url' => $this->request->getVar('url'),
-            'icon' => $icon ? $icon : 'bi bi-circle',
-            'dropdown' => $this->request->getVar('dropdown'),
-            'urutan' => $this->request->getVar('urutan'),
-            'aktif' => $this->request->getVar('aktif'),
+            'profil' => $this->request->getVar('profil'),
             'id_profil' => $id_profil
         ];
 
@@ -103,5 +73,34 @@ class Profil extends BaseController
         $this->profilModel->delete($id_profil);
         session()->setFlashdata('success', 'Data berhasil dihapus');
         return redirect()->to('/profil');
+    }
+
+    public function akses($id_profil)
+    {
+        $data = [
+            'title' => 'Hak Akses Profil',
+            'navigasi' => $this->navigasiModel->getMenuUtama(),
+            'profil' => $this->profilModel->getId($id_profil),
+            'validation' => \Config\Services::validation(),
+        ];
+
+        return view('profil/akses', $data);
+    }
+
+    public function proses()
+    {
+        $id_navigasi = $this->request->getVar('id_navigasi');
+        $id_profil = $this->request->getVar('id_profil');
+
+        $akses = $this->aksesModel->cekAkses($id_navigasi, $id_profil);
+        if (!$akses) {
+            $data = [
+                'id_navigasi' => $id_navigasi,
+                'id_profil' => $id_profil,
+            ];
+            $this->aksesModel->save($data);
+        } else {
+            $this->aksesModel->deleteAkses($id_navigasi, $id_profil);
+        }
     }
 }

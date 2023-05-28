@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="mb-3">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Tambah
     </button>
 </div>
@@ -24,9 +24,14 @@
                     <th scope="row"><?= $i++; ?></th>
                     <td><?= $row['profil']; ?></td>
                     <td class="text-nowrap">
-                        <a href="/profil/edit/<?= $row['id_profil']; ?>" class="btn btn-warning me-1">
-                            <i class='bx bx-edit-alt'></i>
+                        <a href="/profil/akses/<?= $row['id_profil']; ?>" class="btn btn-success ">
+                            <i class='bx bx-list-ol'></i>
                         </a>
+
+                        <button type="button" class="btn btn-warning me-1 btn-update" data-bs-toggle="modal" data-bs-target="#exampleModal" data-profil="<?= $row['profil']; ?>" data-id="<?= $row['id_profil']; ?>">
+                            <i class='bx bx-edit-alt'></i>
+                        </button>
+
                         <a href="/profil/delete/<?= $row['id_profil']; ?>" class="btn btn-danger btn-delete">
                             <i class='bx bx-trash'></i>
                         </a>
@@ -69,9 +74,18 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
+<script>
+    $('.btn-update').on('click', function() {
+        $('#profil').val($(this).data('profil'))
+        $('#form').attr('action', '/profil/update/' + $(this).data('id'))
+    })
 
+    $('.btn-create').on('click', function() {
+        $('#profil').val('')
+        $('#form').attr('action', '/profil/create')
+    })
+</script>
 <?= $this->endSection(); ?>

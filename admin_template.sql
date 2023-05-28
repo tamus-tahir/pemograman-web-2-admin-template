@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 27, 2023 at 06:38 PM
+-- Generation Time: May 28, 2023 at 01:38 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,36 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2023-05-13-175638', 'App\\Database\\Migrations\\Config', 'default', 'App', 1684000848, 1),
 (2, '2023-05-21-011528', 'App\\Database\\Migrations\\Navigasi', 'default', 'App', 1684653812, 2),
-(3, '2023-05-27-175601', 'App\\Database\\Migrations\\Profil', 'default', 'App', 1685210216, 3);
+(3, '2023-05-27-175601', 'App\\Database\\Migrations\\Profil', 'default', 'App', 1685210216, 3),
+(4, '2023-05-28-005557', 'App\\Database\\Migrations\\Akses', 'default', 'App', 1685235421, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_akses`
+--
+
+CREATE TABLE `tabel_akses` (
+  `id_akses` int UNSIGNED NOT NULL,
+  `id_profil` int NOT NULL,
+  `id_navigasi` int NOT NULL,
+  `akses_created_at` datetime NOT NULL,
+  `akses_updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tabel_akses`
+--
+
+INSERT INTO `tabel_akses` (`id_akses`, `id_profil`, `id_navigasi`, `akses_created_at`, `akses_updated_at`) VALUES
+(4, 2, 1, '2023-05-28 01:30:35', '2023-05-28 01:30:35'),
+(6, 2, 2, '2023-05-28 01:35:10', '2023-05-28 01:35:10'),
+(7, 2, 3, '2023-05-28 01:35:11', '2023-05-28 01:35:11'),
+(8, 2, 4, '2023-05-28 01:35:12', '2023-05-28 01:35:12'),
+(9, 2, 5, '2023-05-28 01:35:14', '2023-05-28 01:35:14'),
+(11, 2, 7, '2023-05-28 01:35:31', '2023-05-28 01:35:31'),
+(12, 3, 1, '2023-05-28 01:35:40', '2023-05-28 01:35:40'),
+(13, 3, 2, '2023-05-28 01:35:42', '2023-05-28 01:35:42');
 
 -- --------------------------------------------------------
 
@@ -119,7 +148,8 @@ CREATE TABLE `tabel_profil` (
 --
 
 INSERT INTO `tabel_profil` (`id_profil`, `profil`, `profil_created_at`, `profil_updated_at`) VALUES
-(2, 'Superadmin', '2023-05-27 18:05:35', '2023-05-27 18:05:35');
+(2, 'Superadmin', '2023-05-27 18:05:35', '2023-05-28 00:54:02'),
+(3, 'Admin', '2023-05-28 00:42:32', '2023-05-28 00:53:45');
 
 --
 -- Indexes for dumped tables
@@ -130,6 +160,12 @@ INSERT INTO `tabel_profil` (`id_profil`, `profil`, `profil_created_at`, `profil_
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tabel_akses`
+--
+ALTER TABLE `tabel_akses`
+  ADD PRIMARY KEY (`id_akses`);
 
 --
 -- Indexes for table `tabel_config`
@@ -157,7 +193,13 @@ ALTER TABLE `tabel_profil`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tabel_akses`
+--
+ALTER TABLE `tabel_akses`
+  MODIFY `id_akses` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tabel_config`
@@ -175,7 +217,7 @@ ALTER TABLE `tabel_navigasi`
 -- AUTO_INCREMENT for table `tabel_profil`
 --
 ALTER TABLE `tabel_profil`
-  MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

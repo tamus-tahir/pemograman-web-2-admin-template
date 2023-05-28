@@ -27,4 +27,9 @@ class NavigasiModel extends Model
     {
         return $this->where(['dropdown' => 0])->findAll();
     }
+
+    public function getSubmenu($id_navigasi)
+    {
+        return $this->where(['dropdown' => $id_navigasi])->findAll();
+    }
 }
