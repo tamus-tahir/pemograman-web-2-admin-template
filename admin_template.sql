@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 28, 2023 at 01:38 AM
+-- Generation Time: May 29, 2023 at 04:19 PM
 -- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,8 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (1, '2023-05-13-175638', 'App\\Database\\Migrations\\Config', 'default', 'App', 1684000848, 1),
 (2, '2023-05-21-011528', 'App\\Database\\Migrations\\Navigasi', 'default', 'App', 1684653812, 2),
 (3, '2023-05-27-175601', 'App\\Database\\Migrations\\Profil', 'default', 'App', 1685210216, 3),
-(4, '2023-05-28-005557', 'App\\Database\\Migrations\\Akses', 'default', 'App', 1685235421, 4);
+(4, '2023-05-28-005557', 'App\\Database\\Migrations\\Akses', 'default', 'App', 1685235421, 4),
+(6, '2023-05-29-015627', 'App\\Database\\Migrations\\User', 'default', 'App', 1685327399, 5);
 
 -- --------------------------------------------------------
 
@@ -151,6 +152,33 @@ INSERT INTO `tabel_profil` (`id_profil`, `profil`, `profil_created_at`, `profil_
 (2, 'Superadmin', '2023-05-27 18:05:35', '2023-05-28 00:54:02'),
 (3, 'Admin', '2023-05-28 00:42:32', '2023-05-28 00:53:45');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_user`
+--
+
+CREATE TABLE `tabel_user` (
+  `id_user` int UNSIGNED NOT NULL,
+  `id_profil` int NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `telpon` varchar(75) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `aktif` int NOT NULL,
+  `user_created_at` datetime NOT NULL,
+  `user_updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tabel_user`
+--
+
+INSERT INTO `tabel_user` (`id_user`, `id_profil`, `username`, `password`, `nama`, `telpon`, `foto`, `aktif`, `user_created_at`, `user_updated_at`) VALUES
+(1, 2, 'superadmin', '$2y$10$7EYHniABoOOehMzPti47EuLwsmxyS1BzvSUsMSUX9tIb3dCtIhi5O', 'Superadmin', '', NULL, 1, '2023-05-29 02:30:06', '2023-05-29 02:30:06'),
+(2, 3, 'admin123', '$2y$10$MH6iwcboid526vIh.9qQpu2d.GxHdkLgP2jak57eP.P1ZBwSbOL/S', 'Admin 123', '08114444444', '1685327474_bc74c1f058cfb8edb083.jpg', 1, '2023-05-29 02:31:14', '2023-05-29 02:31:14');
+
 --
 -- Indexes for dumped tables
 --
@@ -186,6 +214,12 @@ ALTER TABLE `tabel_profil`
   ADD PRIMARY KEY (`id_profil`);
 
 --
+-- Indexes for table `tabel_user`
+--
+ALTER TABLE `tabel_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -193,7 +227,7 @@ ALTER TABLE `tabel_profil`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tabel_akses`
@@ -218,6 +252,12 @@ ALTER TABLE `tabel_navigasi`
 --
 ALTER TABLE `tabel_profil`
   MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tabel_user`
+--
+ALTER TABLE `tabel_user`
+  MODIFY `id_user` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
