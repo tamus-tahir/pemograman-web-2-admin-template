@@ -22,6 +22,8 @@ class UserModel extends Model
 
     public function getId($id_user)
     {
-        return $this->where(['id_user' => $id_user])->first();
+        return $this->where(['id_user' => $id_user])
+            ->join('tabel_profil', 'tabel_profil.id_profil = tabel_user.id_profil')
+            ->first();
     }
 }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 29, 2023 at 04:19 PM
+-- Generation Time: Jun 02, 2023 at 08:30 PM
 -- Server version: 8.0.30
--- PHP Version: 7.2.19
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -176,8 +176,9 @@ CREATE TABLE `tabel_user` (
 --
 
 INSERT INTO `tabel_user` (`id_user`, `id_profil`, `username`, `password`, `nama`, `telpon`, `foto`, `aktif`, `user_created_at`, `user_updated_at`) VALUES
-(1, 2, 'superadmin', '$2y$10$7EYHniABoOOehMzPti47EuLwsmxyS1BzvSUsMSUX9tIb3dCtIhi5O', 'Superadmin', '', NULL, 1, '2023-05-29 02:30:06', '2023-05-29 02:30:06'),
-(2, 3, 'admin123', '$2y$10$MH6iwcboid526vIh.9qQpu2d.GxHdkLgP2jak57eP.P1ZBwSbOL/S', 'Admin 123', '08114444444', '1685327474_bc74c1f058cfb8edb083.jpg', 1, '2023-05-29 02:31:14', '2023-05-29 02:31:14');
+(1, 2, 'superadmin', '$2y$10$7EYHniABoOOehMzPti47EuLwsmxyS1BzvSUsMSUX9tIb3dCtIhi5O', 'Superadmin', '', '1685734734_a81958efb90705202b23.jpg', 1, '2023-05-29 02:30:06', '2023-06-02 19:38:54'),
+(9, 3, 'admin123', '$2y$10$rnz5j5BtPhDiz1BraMGGoeRXZuHPJhKpWHbaCGvOI0.0/jFJw4klC', 'Admin', '', '1685734868_a76e9eeeb5a7a555f75e.jpg', 1, '2023-06-02 19:41:08', '2023-06-02 19:50:22'),
+(10, 3, 'operator', '$2y$10$vppbLAUweoTeYFoZ7YMTEeZc1O4sFFjVon6v4Hb5vyNWWfy34ynKm', 'Operator', '08115555555', NULL, 1, '2023-06-02 20:07:27', '2023-06-02 20:07:27');
 
 --
 -- Indexes for dumped tables
@@ -257,7 +258,7 @@ ALTER TABLE `tabel_profil`
 -- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
-  MODIFY `id_user` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

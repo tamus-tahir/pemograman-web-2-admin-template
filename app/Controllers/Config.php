@@ -37,7 +37,7 @@ class Config extends BaseController
 
         if (!$this->validate($rules)) {
             session()->setFlashdata('error', 'Data gagal diubah');
-            redirect()->back()->withInput();
+            return redirect()->back()->withInput();
         }
 
         // get upload

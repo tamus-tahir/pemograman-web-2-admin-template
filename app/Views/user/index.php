@@ -30,6 +30,15 @@
                     <td><?= $row['telpon']; ?></td>
                     <td><?= $row['aktif'] == 1 ? 'Yes' : 'No'; ?></td>
                     <td class="text-nowrap">
+
+                        <button type="button" class="btn btn-info me-1 btn-detail" data-bs-toggle="modal" data-bs-target="#detailModal" data-id="<?= $row['id_user']; ?>">
+                            <i class='bx bxs-show'></i>
+                        </button>
+
+                        <button type="button" class="btn btn-success me-1 btn-password" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="<?= $row['id_user']; ?>" data-username="<?= $row['username']; ?>">
+                            <i class='bx bxs-key'></i>
+                        </button>
+
                         <a href="/user/edit/<?= $row['id_user']; ?>" class="btn btn-warning me-1">
                             <i class='bx bx-edit-alt'></i>
                         </a>
@@ -47,9 +56,133 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('modal'); ?>
+<!-- modal form password -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Form Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+                <form class="row g-3" method="post" action="" id="form">
+
+                    <h5>Username : <span class="username"></span></h5>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password <span class="text-danger">* (Min 8 Karakter)</span></label>
+                        <input type="password" class="form-control" id="password" name="password" required minlength="8">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passwordkonfirmasi" class="form-label">Konfirmasi Password <span class="text-danger">* (Min 8 Karakter)</span></label>
+                        <input type="password" class="form-control" id="passwordkonfirmasi" name="passwordkonfirmasi" required minlength="8" data-parsley-equalto="#password">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- end modal form password -->
+
+<!-- modal detail -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail User</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row g-3">
+
+                    <div class="col-md-3">
+                        <img src="" alt="" class="detail-foto rounded w-100">
+                    </div>
+
+                    <div class="col-md-9">
+                        <table class="table">
+                            <tr>
+                                <td width="100px">Username</td>
+                                <td width="10px">:</td>
+                                <td class="detail-username"></td>
+                            </tr>
+                            <tr>
+                                <td>Profil</td>
+                                <td>:</td>
+                                <td class="detail-profil"></td>
+                            </tr>
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td class="detail-nama"></td>
+                            </tr>
+                            <tr>
+                                <td>Telpon</td>
+                                <td>:</td>
+                                <td class="detail-telpon"></td>
+                            </tr>
+                            <tr>
+                                <td>Aktif</td>
+                                <td>:</td>
+                                <td class="detail-aktif"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end modal detail -->
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
+<script>
+    $('.btn-password').on('click', function() {
+        $('.username').html($(this).data('username'))
+        $('#form').attr('action', '/user/password/' + $(this).data('id'))
+    })
 
+    $('.btn-detail').on('click', function() {
+        let id = $(this).data('id')
+
+        $.ajax({
+            url: '/user/detail',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                let foto = data.foto ? data.foto : 'noprofil.png';
+                $('.detail-foto').attr('src', '/assets/img/' + foto)
+                $('.detail-username').html(data.username)
+                $('.detail-profil').html(data.profil)
+                $('.detail-nama').html(data.nama)
+                $('.detail-telpon').html(data.telpon)
+                $('.detail-aktif').html(data.aktif == 1 ? 'Yes' : 'No')
+            }
+        })
+    })
+</script>
 <?= $this->endSection(); ?>

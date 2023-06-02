@@ -2,66 +2,75 @@
 
 <?= $this->section('content'); ?>
 
-<form class="row g-3" method="post" action="/navigasi/update/<?= $navigasi['id_navigasi']; ?>" id="form">
+<form class="row g-3" method="post" action="/user/update/<?= $user['id_user']; ?>" id="form" enctype="multipart/form-data">
 
-    <div class="col-md-4">
-        <label for="menu" class="form-label">Menu <span class="text-danger">*</span></label>
-        <input type="text" class="form-control <?= validation_show_error('menu') ? 'is-invalid' : ''; ?>" id="menu" name="menu" required value="<?= $navigasi['menu']; ?>">
+    <div class="col-md-3">
+        <label for="foto" class="form-label">Upload Foto </label>
+        <label for="foto" class="form-label"><span class="text-danger">(Type PNG/JPG/JPEG, Max Size 500Kb)</span></label>
+        <input class="form-control <?= validation_show_error('foto') ? 'is-invalid' : ''; ?>" type="file" id="upload" name="foto">
         <div class="invalid-feedback">
-            <?= validation_show_error('menu'); ?>
+            <?= validation_show_error('foto'); ?>
+        </div>
+        <img src="/assets/img/<?= $user['foto'] ? $user['foto'] : 'noprofil.png'; ?>" alt="" width="100%" class="mt-3 rounded" id="preview">
+    </div>
+
+    <input type="hidden" name="foto_lama" value="<?= $user['foto']; ?>">
+
+    <div class="col-md-9">
+
+        <div class="mb-3">
+            <label for="id_profil" class="form-label">Profil <span class="text-danger">*</span></label>
+            <select class="form-select <?= validation_show_error('id_profil') ? 'is-invalid' : ''; ?>" id="id_profil" name="id_profil" required>
+                <option value="">- Pilih Profil -</option>
+                <?php foreach ($profil as $row) : ?>
+                    <option value="<?= $row['id_profil']; ?>" <?= $user['id_profil'] == $row['id_profil'] ? 'selected' : ''; ?>><?= $row['profil']; ?></option>
+                <?php endforeach ?>
+            </select>
+            <div class="invalid-feedback">
+                <?= validation_show_error('id_profil'); ?>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+            <input type="text" class="form-control <?= validation_show_error('username') ? 'is-invalid' : ''; ?>" id="username" name="username" required value="<?= $user['username']; ?>">
+            <div class="invalid-feedback">
+                <?= validation_show_error('username'); ?>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+            <input type="text" class="form-control <?= validation_show_error('nama') ? 'is-invalid' : ''; ?>" id="nama" name="nama" required value="<?= $user['nama']; ?>">
+            <div class="invalid-feedback">
+                <?= validation_show_error('nama'); ?>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="telpon" class="form-label">Telpon </label>
+            <input type="text" class="form-control <?= validation_show_error('telpon') ? 'is-invalid' : ''; ?>" id="telpon" name="telpon" value="<?= $user['telpon']; ?>">
+            <div class="invalid-feedback">
+                <?= validation_show_error('telpon'); ?>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="aktif" class="form-label">Aktif <span class="text-danger">*</span></label>
+            <select class="form-select <?= validation_show_error('aktif') ? 'is-invalid' : ''; ?>" id="aktif" name="aktif" required>
+                <option value="1" <?= $user['aktif'] == 1 ? 'selected' : ''; ?>>Yes</option>
+                <option value="0" <?= $user['aktif'] == 0 ? 'selected' : ''; ?>>NO</option>
+            </select>
+            <div class="invalid-feedback">
+                <?= validation_show_error('aktif'); ?>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <label for="url" class="form-label">URL <span class="text-danger">*</span></label>
-        <input type="text" class="form-control <?= validation_show_error('url') ? 'is-invalid' : ''; ?>" id="url" name="url" required value="<?= $navigasi['url']; ?>">
-        <div class="invalid-feedback">
-            <?= validation_show_error('url'); ?>
-        </div>
-    </div>
 
-    <div class="col-md-4">
-        <label for="icon" class="form-label">Icon </label>
-        <input type="text" class="form-control <?= validation_show_error('icon') ? 'is-invalid' : ''; ?>" id="icon" name="icon" value="<?= $navigasi['icon']; ?>">
-        <div class="invalid-feedback">
-            <?= validation_show_error('icon'); ?>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <label for="dropdown" class="form-label">Dropdown <span class="text-danger">*</span></label>
-        <select class="form-select <?= validation_show_error('dropdown') ? 'is-invalid' : ''; ?>" id="dropdown" name="dropdown" required>
-            <option value="0" <?= $navigasi['dropdown'] == 0 ? 'selected' : ''; ?>>NO</option>
-            <?php foreach ($menu as $row) : ?>
-                <option value="<?= $row['id_navigasi']; ?>" <?= $navigasi['dropdown'] == $row['id_navigasi'] ? 'selected' : ''; ?>><?= $row['menu']; ?></option>
-            <?php endforeach ?>
-        </select>
-        <div class="invalid-feedback">
-            <?= validation_show_error('dropdown'); ?>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <label for="urutan" class="form-label">Urutan <span class="text-danger">*</span></label>
-        <input type="number" class="form-control <?= validation_show_error('urutan') ? 'is-invalid' : ''; ?>" id="urutan" name="urutan" required value="<?= $navigasi['urutan']; ?>">
-        <div class="invalid-feedback">
-            <?= validation_show_error('urutan'); ?>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <label for="aktif" class="form-label">Aktif <span class="text-danger">*</span></label>
-        <select class="form-select <?= validation_show_error('aktif') ? 'is-invalid' : ''; ?>" id="aktif" name="aktif" required>
-            <option value="1" <?= $navigasi['aktif'] == 1 ? 'selected' : ''; ?>>Yes</option>
-            <option value="0" <?= $navigasi['aktif'] == 0 ? 'selected' : ''; ?>>NO</option>
-        </select>
-        <div class="invalid-feedback">
-            <?= validation_show_error('aktif'); ?>
-        </div>
-    </div>
 
     <div class="text-end">
-        <a href="/navigasi" class="btn btn-danger me-1">Cancel</a>
+        <a href="/user" class="btn btn-danger me-1">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 

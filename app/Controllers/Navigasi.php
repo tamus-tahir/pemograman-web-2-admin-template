@@ -46,7 +46,7 @@ class Navigasi extends BaseController
 
         if (!$this->validate($rules)) {
             session()->setFlashdata('error', 'Data gagal ditambahkan');
-            redirect()->back()->withInput();
+            return redirect()->back()->withInput();
         }
 
         $icon = $this->request->getVar('icon');
@@ -89,7 +89,7 @@ class Navigasi extends BaseController
 
         if (!$this->validate($rules)) {
             session()->setFlashdata('error', 'Data gagal diubah');
-            redirect()->back()->withInput();
+            return redirect()->back()->withInput();
         }
 
         $icon = $this->request->getVar('icon');
