@@ -26,4 +26,9 @@ class UserModel extends Model
             ->join('tabel_profil', 'tabel_profil.id_profil = tabel_user.id_profil')
             ->first();
     }
+
+    public function getUsername($username)
+    {
+        return $this->where(['username' => $username])->first();
+    }
 }

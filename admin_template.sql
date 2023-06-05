@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 02, 2023 at 08:30 PM
+-- Generation Time: Jun 05, 2023 at 12:41 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.19
 
@@ -176,9 +176,9 @@ CREATE TABLE `tabel_user` (
 --
 
 INSERT INTO `tabel_user` (`id_user`, `id_profil`, `username`, `password`, `nama`, `telpon`, `foto`, `aktif`, `user_created_at`, `user_updated_at`) VALUES
-(1, 2, 'superadmin', '$2y$10$7EYHniABoOOehMzPti47EuLwsmxyS1BzvSUsMSUX9tIb3dCtIhi5O', 'Superadmin', '', '1685734734_a81958efb90705202b23.jpg', 1, '2023-05-29 02:30:06', '2023-06-02 19:38:54'),
-(9, 3, 'admin123', '$2y$10$rnz5j5BtPhDiz1BraMGGoeRXZuHPJhKpWHbaCGvOI0.0/jFJw4klC', 'Admin', '', '1685734868_a76e9eeeb5a7a555f75e.jpg', 1, '2023-06-02 19:41:08', '2023-06-02 19:50:22'),
-(10, 3, 'operator', '$2y$10$vppbLAUweoTeYFoZ7YMTEeZc1O4sFFjVon6v4Hb5vyNWWfy34ynKm', 'Operator', '08115555555', NULL, 1, '2023-06-02 20:07:27', '2023-06-02 20:07:27');
+(1, 2, 'superadmin', '$2y$10$.oGgP/96NzjO4oHOwvdhwOkyhBLjv85j49irJzVixZJxpc/k.BYzu', 'Superadmin', '', '1685734734_a81958efb90705202b23.jpg', 1, '2023-05-29 02:30:06', '2023-06-04 23:56:07'),
+(9, 3, 'admin123', '$2y$10$9bdD8DGnXzW/FMtTXYWqbeL9NEzBfHcAXjrVmORvM54zA5FGRaA6W', 'Admin', '', '1685734868_a76e9eeeb5a7a555f75e.jpg', 1, '2023-06-02 19:41:08', '2023-06-04 23:56:13'),
+(10, 3, 'operator', '$2y$10$I/Lqpg5Xc07ZKvVuluEnbOTRwAv5PvqJm8iJTef6AO3BCXEy/3Utu', 'Operator', '08115555555', NULL, 1, '2023-06-02 20:07:27', '2023-06-04 23:56:18');
 
 --
 -- Indexes for dumped tables

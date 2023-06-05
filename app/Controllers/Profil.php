@@ -35,7 +35,7 @@ class Profil extends BaseController
 
         if (!$this->validate($rules)) {
             session()->setFlashdata('error', 'Data gagal ditambahkan');
-            redirect()->back()->withInput();
+            return redirect()->back()->withInput();
         }
 
         $data = [
@@ -55,7 +55,7 @@ class Profil extends BaseController
 
         if (!$this->validate($rules)) {
             session()->setFlashdata('error', 'Data gagal diubah');
-            redirect()->back()->withInput();
+            return redirect()->back()->withInput();
         }
 
         $data = [
