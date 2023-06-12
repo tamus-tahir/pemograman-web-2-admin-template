@@ -123,42 +123,48 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
+            <!-- ambil menu berdaarkan profil yang login -->
+            <?php $navigasi = model('AksesModel')->getNavigasiProfil(session('id_profil')) ?>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/config">
-                    <i class='bx bx-cog'></i>
-                    <span>Config</span>
-                </a>
-            </li>
+            <?php foreach ($navigasi as $row) : ?>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class='bx bx-user'></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="/navigasi">
-                            <i class="bi bi-circle"></i><span>Navigasi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profil">
-                            <i class="bi bi-circle"></i><span>Profil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user">
-                            <i class="bi bi-circle"></i><span>User</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <!-- periksa apakah menu utama -->
+                <?php if ($row['dropdown'] == 0) : ?>
+
+                    <!-- periksas jika submenu ada -->
+                    <?php $submenu = model('NavigasiModel')->getSubmenu($row['id_navigasi']) ?>
+
+                    <!-- jika tidak ada submenu -->
+                    <?php if (!$submenu) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="/<?= $row['url']; ?>">
+                                <i class="<?= $row['icon']; ?>"></i>
+                                <span><?= $row['menu']; ?></span>
+                            </a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-target="#components-nav-<?= $row['id_navigasi']; ?>" data-bs-toggle="collapse" href="<?= $row['url']; ?>">
+                                <i class='<?= $row['icon']; ?>'></i><span><?= $row['menu']; ?></span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="components-nav-<?= $row['id_navigasi']; ?>" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                                <?php foreach ($submenu as $submenu) : ?>
+                                    <li>
+                                        <a href="/<?= $submenu['url']; ?>">
+                                            <i class="<?= $submenu['icon']; ?>"></i><span><?= $submenu['menu']; ?></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach ?>
+
+                            </ul>
+                        </li>
+                    <?php endif ?>
+
+                <?php endif ?>
+
+            <?php endforeach ?>
+
             <!-- End Components Nav -->
 
         </ul>

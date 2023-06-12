@@ -32,4 +32,18 @@ class AksesModel extends Model
     {
         return $this->where(['id_navigasi' => $id_navigasi, 'id_profil' => $id_profil])->delete();
     }
+
+    public function getNavigasiProfil($id_profil)
+    {
+        return $this->where(['id_profil' => $id_profil, 'aktif' => 1])
+            ->join('tabel_navigasi', 'tabel_navigasi.id_navigasi = tabel_akses.id_navigasi')
+            ->findAll();
+    }
+
+    public function getAkses($url, $id_profil)
+    {
+        return $this->where(['url' => $url, 'id_profil' => $id_profil])
+            ->join('tabel_navigasi', 'tabel_navigasi.id_navigasi = tabel_akses.id_navigasi')
+            ->first();
+    }
 }

@@ -47,7 +47,6 @@
     </table>
 </div>
 
-
 <?= $this->endSection(); ?>
 
 <?= $this->section('modal'); ?>

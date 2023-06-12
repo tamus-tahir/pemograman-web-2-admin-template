@@ -42,31 +42,31 @@ class Auth extends BaseController
 
         $user = $this->userModel->getUsername($username);
 
-        if ($user) {
-            // periksa jika user aktif
-            if ($user['aktif'] == 1) {
-                // periksa password
-                if (password_verify($password, $user['password'])) {
-                    // jika password benar
-                    $data = [
-                        'id_profil' => $user['id_profil'],
-                        'id_user' => $user['id_user'],
-                    ];
-                    session()->set($data);
-                    session()->setFlashdata('success', 'Selamat Datang ' . $user['nama']);
-                    return redirect()->to('/dashboard');
-                } else {
-                    session()->setFlashdata('error', 'Username / Password Salah');
-                    return redirect()->to('/auth');
-                }
-            } else {
-                session()->setFlashdata('error', 'Akun anda tidak aktif');
-                return redirect()->to('/auth');
-            }
-        } else {
+        // periksa apakah usernya tidak ada
+        if (!$user) {
             session()->setFlashdata('error', 'Username / Password Salah');
             return redirect()->to('/auth');
         }
+
+        // periksa apakah usernya tidak aktif
+        if ($user['aktif'] == 0) {
+            session()->setFlashdata('error', 'Akun anda tidak aktif');
+            return redirect()->to('/auth');
+        }
+
+        // perika password
+        if (password_verify($password, $user['password']) == false) {
+            session()->setFlashdata('error', 'Username / Password Salah');
+            return redirect()->to('/auth');
+        }
+
+        $data = [
+            'id_profil' => $user['id_profil'],
+            'id_user' => $user['id_user'],
+        ];
+        session()->set($data);
+        session()->setFlashdata('success', 'Selamat Datang ' . $user['nama']);
+        return redirect()->to('/dashboard');
     }
 
     public function logout()
