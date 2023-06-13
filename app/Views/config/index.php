@@ -47,7 +47,7 @@
             <?= validation_show_error('logo'); ?>
         </div>
 
-        <img src="/assets/img/<?= $config['logo']; ?>" alt="" width="100%" class="mt-3 rounded" id="preview">
+        <img src="/assets/img/<?= $config['logo']; ?>" alt="" width="40%" class="mt-3 rounded" id="preview">
     </div>
 
     <input type="hidden" name="logo_old" value="<?= $config['logo']; ?>">

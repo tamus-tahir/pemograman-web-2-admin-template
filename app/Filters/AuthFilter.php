@@ -23,7 +23,7 @@ class AuthFilter implements FilterInterface
             $akses = model('AksesModel')->getAkses($url, $id_profil);
             if (!$akses) {
                 session()->setFlashdata('error', 'Anda tidak diberikan akses');
-                return redirect()->to('/dashboard');
+                return redirect()->to('/dashboard/error');
             }
         }
     }

@@ -74,7 +74,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="/dashboard/profil">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -84,7 +84,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="/dashboard/editprofil">
                                 <i class="bi bi-gear"></i>
                                 <span>Account Settings</span>
                             </a>
@@ -94,7 +94,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                            <a class="dropdown-item d-flex align-items-center" href="/dashboard/editpassword">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Change Password</span>
                             </a>
@@ -171,13 +171,13 @@
 
     </aside><!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <main id="main" class="main mb-5">
 
         <div class="pagetitle card p-3">
             <h1><?= $title; ?></h1>
         </div>
 
-        <div class="card p-3">
+        <div class="<?= $title != 'Dashboard' ? 'card p-3' : ''; ?> mb-5">
             <?= $this->renderSection('content'); ?>
         </div>
 

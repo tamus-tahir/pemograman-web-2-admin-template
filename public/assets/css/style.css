@@ -1219,6 +1219,9 @@ h6 {
   transition: all 0.3s;
   border-top: 1px solid #cddfff;
   background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer .copyright {
