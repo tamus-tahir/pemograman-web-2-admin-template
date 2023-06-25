@@ -111,6 +111,12 @@ class Navigasi extends BaseController
 
     public function delete($id_navigasi)
     {
+        $cek = $this->navigasiModel->getSubmenu($id_navigasi);
+        if ($cek) {
+            session()->setFlashdata('error', 'Data gagal dihapus, data sedang digunakan pada menu dropdown');
+            return redirect()->to('/navigasi');
+        }
+
         $this->navigasiModel->delete($id_navigasi);
         session()->setFlashdata('success', 'Data berhasil dihapus');
         return redirect()->to('/navigasi');

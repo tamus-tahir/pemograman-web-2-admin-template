@@ -62,4 +62,11 @@ $('#upload').on('change', function (event) {
 
 // ===== data table =====
 $('#data-table').DataTable();
+
+$('#export-table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
+});
 // ===== end data table =====

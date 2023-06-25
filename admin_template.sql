@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 12, 2023 at 07:56 PM
+-- Generation Time: Jun 24, 2023 at 09:57 AM
 -- Server version: 8.0.30
--- PHP Version: 7.4.19
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -149,7 +149,7 @@ CREATE TABLE `tabel_profil` (
 --
 
 INSERT INTO `tabel_profil` (`id_profil`, `profil`, `profil_created_at`, `profil_updated_at`) VALUES
-(2, 'Superadmin', '2023-05-27 18:05:35', '2023-05-28 00:54:02'),
+(2, 'superadmin', '2023-06-19 04:51:48', '2023-06-19 04:51:48'),
 (3, 'Admin', '2023-05-28 00:42:32', '2023-05-28 00:53:45');
 
 -- --------------------------------------------------------
@@ -176,8 +176,8 @@ CREATE TABLE `tabel_user` (
 --
 
 INSERT INTO `tabel_user` (`id_user`, `id_profil`, `username`, `password`, `nama`, `telpon`, `foto`, `aktif`, `user_created_at`, `user_updated_at`) VALUES
-(1, 2, 'superadmin', '$2y$10$.oGgP/96NzjO4oHOwvdhwOkyhBLjv85j49irJzVixZJxpc/k.BYzu', 'Superadmin', '', '1685734734_a81958efb90705202b23.jpg', 1, '2023-05-29 02:30:06', '2023-06-04 23:56:07'),
-(9, 3, 'admin123', '$2y$10$9bdD8DGnXzW/FMtTXYWqbeL9NEzBfHcAXjrVmORvM54zA5FGRaA6W', 'Admin', '', '1685734868_a76e9eeeb5a7a555f75e.jpg', 1, '2023-06-02 19:41:08', '2023-06-04 23:56:13'),
+(1, 2, 'superadmin', '$2y$10$.oGgP/96NzjO4oHOwvdhwOkyhBLjv85j49irJzVixZJxpc/k.BYzu', 'Superadmin', '08114444444', '1686681570_e292c3d73a71c66a2d9c.jpg', 1, '2023-05-29 02:30:06', '2023-06-13 18:39:30'),
+(9, 3, 'admin123', '$2y$10$UgKpcGWPLJYhkCVbAUkYruOrt98ZLW2fs7pCf1mAUMFpZBFPja422', 'Admin', '', '1686681617_5ba9df571c1aa0c2e7d6.jpg', 1, '2023-06-02 19:41:08', '2023-06-13 18:51:33'),
 (10, 3, 'operator', '$2y$10$I/Lqpg5Xc07ZKvVuluEnbOTRwAv5PvqJm8iJTef6AO3BCXEy/3Utu', 'Operator', '08115555555', NULL, 1, '2023-06-02 20:07:27', '2023-06-04 23:56:18');
 
 --
@@ -252,7 +252,7 @@ ALTER TABLE `tabel_navigasi`
 -- AUTO_INCREMENT for table `tabel_profil`
 --
 ALTER TABLE `tabel_profil`
-  MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_profil` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tabel_user`

@@ -30,6 +30,8 @@ class NavigasiModel extends Model
 
     public function getSubmenu($id_navigasi)
     {
-        return $this->where(['dropdown' => $id_navigasi])->findAll();
+        return $this->where(['dropdown' => $id_navigasi])
+            ->orderBy('urutan', 'ASC')
+            ->findAll();
     }
 }

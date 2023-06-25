@@ -31,4 +31,9 @@ class UserModel extends Model
     {
         return $this->where(['username' => $username])->first();
     }
+
+    public function getProfil($id_profil)
+    {
+        return $this->where(['id_profil' => $id_profil])->first();
+    }
 }

@@ -9,12 +9,14 @@ class Profil extends BaseController
     protected $profilModel;
     protected $aksesModel;
     protected $navigasiModel;
+    protected $userModel;
 
     public function __construct()
     {
         $this->profilModel =  new \App\Models\ProfilModel;
         $this->aksesModel =  new \App\Models\AksesModel;
         $this->navigasiModel =  new \App\Models\NavigasiModel;
+        $this->userModel =  new \App\Models\UserModel;
     }
 
     public function index()
@@ -70,6 +72,12 @@ class Profil extends BaseController
 
     public function delete($id_profil)
     {
+        $cek = $this->userModel->getProfil($id_profil);
+        if ($cek) {
+            session()->setFlashdata('error', 'Data gagal dihapus, data sedang digunakan pada tabel user');
+            return redirect()->to('/profil');
+        }
+
         $this->profilModel->delete($id_profil);
         session()->setFlashdata('success', 'Data berhasil dihapus');
         return redirect()->to('/profil');

@@ -1225,13 +1225,15 @@ h6 {
 }
 
 .footer .copyright {
-  text-align: center;
+  /* text-align: center; */
   color: #012970;
+  margin-left: 45px;
 }
 
 .footer .credits {
   padding-top: 5px;
-  text-align: center;
+  /* text-align: center; */
   font-size: 13px;
   color: #012970;
+  margin-left: 45px;
 }

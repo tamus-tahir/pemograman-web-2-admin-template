@@ -37,9 +37,13 @@
                         <a href="/navigasi/edit/<?= $row['id_navigasi']; ?>" class="btn btn-warning me-1">
                             <i class='bx bx-edit-alt'></i>
                         </a>
-                        <a href="/navigasi/delete/<?= $row['id_navigasi']; ?>" class="btn btn-danger btn-delete">
-                            <i class='bx bx-trash'></i>
-                        </a>
+
+                        <?php $cek = model('NavigasiModel')->getSubmenu($row['id_navigasi']) ?>
+                        <?php if (!$cek) : ?>
+                            <a href="/navigasi/delete/<?= $row['id_navigasi']; ?>" class="btn btn-danger btn-delete">
+                                <i class='bx bx-trash'></i>
+                            </a>
+                        <?php endif ?>
                     </td>
                 </tr>
             <?php endforeach ?>

@@ -20,12 +20,12 @@
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/assets/vendor/dataTables/dataTables.bootstrap5.min.css" rel="stylesheet">
-
+    <!-- plugins CSS Files -->
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/plugins/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/plugins/dataTables/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="/assets/plugins/dataTables/buttons.dataTables.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="/dashboard" class="logo d-flex align-items-center">
                 <img src="/assets/img/<?= $config['logo']; ?>" alt="">
                 <span class="d-none d-lg-block"><?= $config['appname']; ?></span>
             </a>
@@ -219,13 +219,22 @@
 
     <?= $this->renderSection('modal'); ?>
 
-    <!-- Vendor JS Files -->
-    <script src="/assets/vendor/jquery/jquery-3.7.0.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/parsley/parsley.min.js"></script>
-    <script src="/assets/vendor/sweetalert2/sweetalert2@11"></script>
-    <script src="/assets/vendor/dataTables/jquery.dataTables.min.js"></script>
-    <script src="/assets/vendor/dataTables/dataTables.bootstrap5.min.js"></script>
+    <!-- plugins JS Files -->
+    <script src="/assets/plugins/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/plugins/parsley/parsley.min.js"></script>
+    <script src="/assets/plugins/sweetalert2/sweetalert2@11"></script>
+
+    <script src="/assets/plugins/dataTables/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/dataTables/dataTables.bootstrap5.min.js"></script>
+    <script src="/assets/plugins/dataTables/dataTables.buttons.min.js"></script>
+    <script src="/assets/plugins/dataTables/jszip.min.js"></script>
+    <script src="/assets/plugins/dataTables/pdfmake.min.js"></script>
+    <script src="/assets/plugins/dataTables/vfs_fonts.js"></script>
+    <script src="/assets/plugins/dataTables/buttons.html5.min.js"></script>
+    <script src="/assets/plugins/dataTables/buttons.print.min.js"></script>
+
+    <script src="/assets/plugins/highcharts/highcharts.js"></script>
 
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>

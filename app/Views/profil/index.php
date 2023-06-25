@@ -24,7 +24,7 @@
                     <th scope="row"><?= $i++; ?></th>
                     <td><?= $row['profil']; ?></td>
                     <td class="text-nowrap">
-                        <a href="/profil/akses/<?= $row['id_profil']; ?>" class="btn btn-success ">
+                        <a href="/profil/akses/<?= $row['id_profil']; ?>" class="btn btn-success me-1">
                             <i class='bx bx-list-ol'></i>
                         </a>
 
@@ -32,9 +32,13 @@
                             <i class='bx bx-edit-alt'></i>
                         </button>
 
-                        <a href="/profil/delete/<?= $row['id_profil']; ?>" class="btn btn-danger btn-delete">
-                            <i class='bx bx-trash'></i>
-                        </a>
+                        <?php $cek = model('UserModel')->getProfil($row['id_profil']) ?>
+                        <?php if (!$cek) : ?>
+                            <a href="/profil/delete/<?= $row['id_profil']; ?>" class="btn btn-danger btn-delete">
+                                <i class='bx bx-trash'></i>
+                            </a>
+                        <?php endif ?>
+
                     </td>
                 </tr>
             <?php endforeach ?>
@@ -78,7 +82,7 @@
 
 <?= $this->section('script'); ?>
 <script>
-    $('.btn-update').on('click', function() {
+    $('#data-table').on('click', '.btn-update', function() {
         $('#profil').val($(this).data('profil'))
         $('#form').attr('action', '/profil/update/' + $(this).data('id'))
     })

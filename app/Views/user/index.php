@@ -139,6 +139,16 @@
                                 <td>:</td>
                                 <td class="detail-aktif"></td>
                             </tr>
+                            <tr>
+                                <td>Dibuat</td>
+                                <td>:</td>
+                                <td class="detail-dibuat"></td>
+                            </tr>
+                            <tr>
+                                <td>Diupdate</td>
+                                <td>:</td>
+                                <td class="detail-diupdate"></td>
+                            </tr>
                         </table>
                     </div>
 
@@ -158,12 +168,12 @@
 
 <?= $this->section('script'); ?>
 <script>
-    $('.btn-password').on('click', function() {
+    $('#data-table').on('click', '.btn-password', function() {
         $('.username').html($(this).data('username'))
         $('#form').attr('action', '/user/password/' + $(this).data('id'))
     })
 
-    $('.btn-detail').on('click', function() {
+    $('#data-table').on('click', '.btn-detail', function() {
         let id = $(this).data('id')
 
         $.ajax({
@@ -180,6 +190,8 @@
                 $('.detail-profil').html(data.profil)
                 $('.detail-nama').html(data.nama)
                 $('.detail-telpon').html(data.telpon)
+                $('.detail-dibuat').html(data.user_created_at)
+                $('.detail-diupdate').html(data.user_updated_at)
                 $('.detail-aktif').html(data.aktif == 1 ? 'Yes' : 'No')
             }
         })

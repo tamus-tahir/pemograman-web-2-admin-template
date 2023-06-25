@@ -29,6 +29,16 @@
                 <td>:</td>
                 <td class="detail-telpon"><?= $user['telpon']; ?></td>
             </tr>
+            <tr>
+                <td>Dibuat</td>
+                <td>:</td>
+                <td class="detail-dibuat"><?= $user['user_created_at']; ?></td>
+            </tr>
+            <tr>
+                <td>Diupdate</td>
+                <td>:</td>
+                <td class="detail-diupdate"><?= $user['user_updated_at']; ?></td>
+            </tr>
         </table>
 
         <a href="/dashboard/editprofil" class="btn btn-primary me-1">Change Profil</a>

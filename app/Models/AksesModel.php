@@ -36,6 +36,7 @@ class AksesModel extends Model
     public function getNavigasiProfil($id_profil)
     {
         return $this->where(['id_profil' => $id_profil, 'aktif' => 1])
+            ->orderBy('urutan', 'ASC')
             ->join('tabel_navigasi', 'tabel_navigasi.id_navigasi = tabel_akses.id_navigasi')
             ->findAll();
     }
