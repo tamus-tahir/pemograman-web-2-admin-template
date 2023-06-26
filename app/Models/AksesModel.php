@@ -41,6 +41,15 @@ class AksesModel extends Model
             ->findAll();
     }
 
+    public function getSubmenuProfil($id_navigasi, $id_profil)
+    {
+        return $this->where(['id_profil' => $id_profil, 'aktif' => 1, 'dropdown' => $id_navigasi])
+            ->orderBy('urutan', 'ASC')
+            ->join('tabel_navigasi', 'tabel_navigasi.id_navigasi = tabel_akses.id_navigasi')
+            ->findAll();
+    }
+
+
     public function getAkses($url, $id_profil)
     {
         return $this->where(['url' => $url, 'id_profil' => $id_profil])
