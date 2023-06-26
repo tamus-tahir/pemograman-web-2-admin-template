@@ -132,7 +132,7 @@
                 <?php if ($row['dropdown'] == 0) : ?>
 
                     <!-- periksas jika submenu ada -->
-                    <?php $submenu = model('NavigasiModel')->getSubmenu($row['id_navigasi']) ?>
+                    <?php $submenu = model('AksesModel')->getSubmenuProfil($row['id_navigasi'], session('id_profil')) ?>
 
                     <!-- jika tidak ada submenu -->
                     <?php if (!$submenu) : ?>
