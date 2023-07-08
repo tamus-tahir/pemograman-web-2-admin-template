@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-md-4">
-        <label for="icon" class="form-label">Icon </label>
+        <label for="icon" class="form-label">Icon </label> </label> <a href="https://boxicons.com/" target="_blank" class="ms-5 badge text-bg-success py-2">Cari Icon</a>
         <input type="text" class="form-control <?= validation_show_error('icon') ? 'is-invalid' : ''; ?>" id="icon" name="icon">
         <div class="invalid-feedback">
             <?= validation_show_error('icon'); ?>
